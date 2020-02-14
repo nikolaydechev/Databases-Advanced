@@ -1,0 +1,12 @@
+SELECT m.Name AS [MinionName],
+	   m.Age AS [MinionAge]
+  FROM Villains AS v
+  JOIN MinionsVillains AS mv ON mv.VillainId = v.Id
+  JOIN Minions AS m ON m.Id = mv.MinionId
+ WHERE v.Id = @villainId
+ GROUP BY v.Name, m.Name, m.Age
+ ORDER BY MinionName
+
+SELECT COUNT(*) FROM MinionsVillains WHERE VillainId = @villainId
+
+  
